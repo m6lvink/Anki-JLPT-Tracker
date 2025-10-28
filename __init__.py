@@ -1,3 +1,6 @@
+'''
+V.3.1 --> Replace with local version
+'''
 from aqt import mw, gui_hooks
 from aqt.qt import *
 from aqt.utils import showInfo
@@ -171,3 +174,4 @@ def showDashboard():
 action = QAction("JLPT Progress", mw)
 action.triggered.connect(showDashboard)
 mw.form.menuTools.addAction(action)
+
