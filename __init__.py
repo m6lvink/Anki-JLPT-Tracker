@@ -1,7 +1,5 @@
 '''
 JLPT Tracker Anki Add-on
-Built to help track progress towards JLPT levels within Anki :D
-Author: MK
 '''
 from aqt import mw, gui_hooks
 from aqt.qt import *
@@ -40,23 +38,31 @@ def getDashboardContent():
     return finalHtml
 
 def onRenderDeckBrowser(deckBrowser, browserContent):
-    # Hook: Deck Browser (Main Screen)
+    # Hook: Deck Browser 
     
-    dashboardHtml = getDashboardContent()
-    
-    # Strict academic check for None
-    if browserContent.stats is not None:
-        browserContent.stats += dashboardHtml
-    else:
-        browserContent.stats = dashboardHtml
+    try:
+        dashboardHtml = getDashboardContent()
+        
+        # Check for attributes
+        if hasattr(browserContent, "stats"):
+            browserContent.stats = dashboardHtml + browserContent.stats
+            
+    except Exception as e:
+        print(f"JLPT Tracker Error (DeckBrowser): {e}")
 
 def onRenderOverview(overviewInstance, overviewContent):
-    # Hook: Overview (Screen after clicking a deck)    
-    dashboardHtml = getDashboardContent()
+    # Hook: Overview 
     
-    if overviewContent.body is not None:
-        # Prepend to body so it sits at the top
-        overviewContent.body = dashboardHtml + overviewContent.body
+    try:
+        dashboardHtml = getDashboardContent()
+        
+        # (Prevents crash if 'body' is missing)
+        if hasattr(overviewContent, "body"):
+            overviewContent.body = dashboardHtml + overviewContent.body
+            
+    except Exception as e:
+        # Error log console (rather than crashing anki)
+        print(f"JLPT Tracker Error (Overview): {e}")
 
 def handleWebCommand(handledState, commandString, context):
     # Route JS Commands (Toggle/Settings)
