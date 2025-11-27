@@ -1,0 +1,116 @@
+#jlpt-progress-container, #jlpt-progress-container * {
+    box-sizing: border-box;
+}
+
+#jlpt-progress-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-align: left !important;
+    max-width: 600px;
+    margin: 15px auto;
+    padding: 12px 16px;
+    background: var(--canvas-elevated, #ffffff);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-subtle, #e0e0e0);
+    color: var(--fg, #000000);
+    clear: both;
+    display: block;
+}
+
+.jlpt-header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 12px;
+}
+
+.jlpt-title {
+    font-weight: 700; 
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.jlpt-percent {
+    color: var(--fg-subtle, #666); 
+    font-size: 12px; 
+}
+
+.jlpt-controls {
+    display: flex; 
+    align-items: center; 
+    gap: 12px;
+}
+
+.jlpt-time {
+    font-size: 11px; 
+    color: var(--fg-subtle, #666);
+    white-space: nowrap;
+}
+
+.jlpt-icon-btn {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; 
+    height: 24px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+    color: var(--fg-subtle, #666);
+    user-select: none;
+}
+.jlpt-icon-btn:hover { opacity: 1.0; }
+
+.jlpt-bar-row { 
+    margin-bottom: 10px; 
+}
+
+.jlpt-bar-meta {
+    display: flex; 
+    justify-content: space-between; 
+    font-size: 11px; 
+    color: var(--fg-subtle, #666); 
+    margin-bottom: 4px;
+}
+
+.jlpt-track {
+    background: var(--border-subtle, #e0e0e0);
+    height: 8px; 
+    border-radius: 4px; 
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.jlpt-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+    min-width: 0;
+}
+
+#jlpt-minimized {
+    text-align: center; 
+    margin: 10px 0;
+    clear: both;
+}
+
+.jlpt-pill {
+    display: inline-flex; 
+    align-items: center;
+    background: var(--canvas-elevated, #fff); 
+    padding: 6px 16px; 
+    border-radius: 20px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1); 
+    cursor: pointer; 
+    font-size: 12px; 
+    color: var(--fg-subtle, #555); 
+    border: 1px solid var(--border-subtle, #ccc);
+    user-select: none;
+}
+.jlpt-pill:hover { background: var(--canvas, #f0f0f0); }

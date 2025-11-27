@@ -1,0 +1,33 @@
+<div id="jlpt-progress-container">
+    <div class="jlpt-header">
+        <div>
+            <span class="jlpt-title">{level} Progress</span>
+            <span class="jlpt-percent">{overallPct:.0f}%</span>
+        </div>
+        <div class="jlpt-controls">
+            <span class="jlpt-time">{timeStr}</span>
+            <div class="jlpt-icon-btn" onclick="pycmd('jlptSettings'); event.stopPropagation();" title="Settings">
+                &#9881;
+            </div>
+            <div class="jlpt-icon-btn" onclick="pycmd('jlptToggle'); event.stopPropagation();" title="Minimize">
+                &#8722;
+            </div>
+        </div>
+    </div>
+    <div class="jlpt-bar-row">
+        <div class="jlpt-bar-meta">
+            <span>Vocab</span> <span>{vocabCurr} / {vocabReq}</span>
+        </div>
+        <div class="jlpt-track">
+            <div id="jlpt-vocab-fill" class="jlpt-fill"></div>
+        </div>
+    </div>
+    <div class="jlpt-bar-row">
+        <div class="jlpt-bar-meta">
+            <span>Grammar</span> <span>{grammarCurr} / {grammarReq}</span>
+        </div>
+        <div class="jlpt-track">
+            <div id="jlpt-grammar-fill" class="jlpt-fill"></div>
+        </div>
+    </div>
+</div>
