@@ -1,92 +1,39 @@
-# Anki JLPT Progress Dashboard Anki Add-on
+# Anki JLPT Tracker
 
-## Key Features
+An Anki 2.1+ add-on that tracks your progress against JLPT (Japanese Language Proficiency Test) vocabulary and grammar requirements.
 
-**Progress Tracking**
-- Measures study progress for JLPT levels N5 through N1  
-- Displays vocabulary and grammar progress separately  
-- Counts only reviewed cards (excludes new or unseen cards)  
+## Features
 
-**Visual Overview**
-- Shows current counts and total required for your level  
-- Includes a daily countdown to your exam date  
+* **Real-time Dashboard:** Automatically injects a progress dashboard into the Anki Deck Browser and Overview screens.
+* **JLPT Levels:** Presets for N5 through N1 based on standard passing requirements.
+* **Customizable Targets:** Select specific decks and Note Types (Vocabulary vs. Grammar) to track.
+* **Study Estimation:** Calculates completion dates based on your daily "New Card" history.
+* **Minimizable UI:** Toggle between a detailed dashboard and a subtle progress pill.
 
-**Configurable Settings**
-- Choose your target JLPT level  
-- Set an exam deadline  
-- Assign note types to vocabulary, grammar, or ignored categories  
-- Adjust progress bar colors if desired  
+## Project Structure
 
-**Dashboard Access**
-- Access from the Anki menu: Tools → JLPT Tracker  
-- View a detailed summary of all JLPT levels and configurations  
+This project has been refactored for modularity and ease of maintenance:
 
----
+* `__init__.py`: Entry point. Handles Anki hooks (`will_render_content`) and direct HTML injection.
+* `config_manager.py`: Handles loading/saving user settings and level presets.
+* `db_utils.py`: Contains SQL queries and logic for counting card distributions.
+* `view_manager.py`: Generates the HTML string for the dashboard.
+* `gui.py`: PyQt6 definitions for the Settings dialog and color pickers.
+* `web/`: Contains static assets (CSS, HTML templates).
 
 ## Installation
 
-1. Open Anki  
-2. Go to Tools → Add-ons → Get Add-ons  
-3. Enter the code: **1655852410**  
-4. Restart Anki  
-5. Access via Tools → JLPT Tracker  
+1.  Download the latest release or clone this repository.
+2.  Copy the `Anki-JLPT-Tracker` folder into your Anki `addons21` directory.
+3.  Restart Anki.
 
-Compatible with Anki 2.1.1 and later.
+## Usage
 
----
+1.  **Open Settings:** Go to `Tools > JLPT Tracker Settings` or click the Gear icon on the dashboard.
+2.  **Configure Deck:** Select the specific deck you are using for Japanese study.
+3.  **Map Note Types:** The add-on detects your Note Types. Assign them to "Vocab", "Grammar", or "Ignore".
+4.  **Set Deadline:** (Optional) Enter your exam date to see a countdown.
 
-## How It Works
+## License
 
-The add-on reviews the cards in your current deck and includes only those with at least one successful review.  
-
-It classifies each card as either vocabulary or grammar based on your note type configuration.  
-
-Progress is then compared to standard JLPT study goals for your target level.
-
----
-
-## Setup
-
-1. Open the deck browser main page  
-2. Locate the JLPT Progress widget  
-3. Click the gear icon  
-4. Set:
-   - Target JLPT level (N5–N1)  
-   - Exam date in YYYY-MM-DD format  
-5. Assign note types:
-   - vocab → counts toward vocabulary goal  
-   - grammar → counts toward grammar goal  
-   - ignore → excluded from tracking  
-6. Click Save  
-
----
-
-## Display
-
-The widget shows:
-- Target level and completion percentage  
-- Days remaining until the exam  
-- Vocabulary and grammar progress bars  
-- Current and required counts  
-
-Progress bars update automatically as you review more cards.
-
----
-
-## Customization
-
-To modify JLPT level requirements, edit the file: user_config.json in the add-on folder.
-
----
-
-## Full Dashboard
-
-For a complete overview of all levels, open:  
-Tools → JLPT Tracker  
-
-This view lists every level with progress bars and detailed statistics.
-
----
-
-**Final Notes**  
-- Feedback and suggestions are always welcome!
+MIT License
