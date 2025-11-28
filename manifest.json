@@ -1,9 +1,6 @@
 {
     "name": "JLPT Progress Tracker",
     "package": "jlpt_tracker",
-    "conflicts": [],
-    "mod": 0,
-    "min_point_version": 45,
-    "max_point_version": 0,
-    "branch_index": 0
+    "version": "7.5.1",
+    "homepage": "https://ankiweb.net/shared/info/1655852410",
 }
