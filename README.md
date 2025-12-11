@@ -1,6 +1,6 @@
 # Anki JLPT Tracker
 
-An Anki 2.1+ add-on that tracks your progress against JLPT (Japanese Language Proficiency Test) vocabulary and grammar requirements.
+An Anki 2.1+ add-on that tracks your card progress against JLPT (Japanese Language Proficiency Test) vocabulary and grammar requirements.
 
 ## Features
 
