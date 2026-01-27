@@ -23,6 +23,6 @@ DEFAULT_USER_CONFIG = {
     "deadline": "",
     "vocabColor": "#4CAF50", 
     "grammarColor": "#2196F3",
-    "trackedDeck": "", 
+    "trackedDeckIds": [], 
     "minimized": False
 }

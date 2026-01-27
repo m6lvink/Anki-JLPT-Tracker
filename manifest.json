@@ -1,5 +1,6 @@
 {
     "name": "JLPT Progress Tracker",
     "package": "jlpt_tracker",
-    "min_point_version": 45
+    "version": "2.1.3",
+    "author": "MK"
 }
