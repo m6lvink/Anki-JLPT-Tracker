@@ -30,7 +30,7 @@ This project has been refactored for modularity and ease of maintenance:
 ## Usage
 
 1.  **Open Settings:** Go to `Tools > JLPT Tracker Settings` or click the Gear icon on the dashboard.
-2.  **Configure Deck:** Select the specific deck you are using for Japanese study.
+2.  **Configure Decks:** Select the specific decks you are using for Japanese study (supports multi-selection).
 3.  **Map Note Types:** The add-on detects your Note Types. Assign them to "Vocab", "Grammar", or "Ignore".
 4.  **Set Deadline:** (Optional) Enter your exam date to see a countdown.
 
