@@ -1,0 +1,4 @@
+user_config.json
+history.json
+__pycache__/
+*.pyc
