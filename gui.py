@@ -111,6 +111,33 @@ class ConfigDialog(QDialog):
         colorLayout.addWidget(self.grammarBtn)
         mainLayout.addLayout(colorLayout)
 
+        # Background opacity
+        opacityLayout = QHBoxLayout()
+        opacityLayout.addWidget(QLabel("Background Opacity:"))
+        self.opacitySlider = QSlider(Qt.Orientation.Horizontal)
+        self.opacitySlider.setRange(0, 100)
+        savedOpacity = int(self.userConfig.get("backgroundOpacity", 1.0) * 100)
+        self.opacitySlider.setValue(savedOpacity)
+        self.opacityLabel = QLabel(f"{savedOpacity}%")
+        self.opacitySlider.valueChanged.connect(lambda v: self.opacityLabel.setText(f"{v}%"))
+        opacityLayout.addWidget(self.opacitySlider)
+        opacityLayout.addWidget(self.opacityLabel)
+        mainLayout.addLayout(opacityLayout)
+
+        # Tracking mode
+        trackingGroup = QGroupBox("Tracking Mode")
+        trackingLayout = QHBoxLayout()
+        self.modeBoth = QRadioButton("Both")
+        self.modeVocab = QRadioButton("Vocab Only")
+        self.modeGrammar = QRadioButton("Grammar Only")
+        savedMode = self.userConfig.get("trackingMode", "both")
+        {"both": self.modeBoth, "vocab": self.modeVocab, "grammar": self.modeGrammar}.get(savedMode, self.modeBoth).setChecked(True)
+        trackingLayout.addWidget(self.modeBoth)
+        trackingLayout.addWidget(self.modeVocab)
+        trackingLayout.addWidget(self.modeGrammar)
+        trackingGroup.setLayout(trackingLayout)
+        mainLayout.addWidget(trackingGroup)
+
         # Note Types
         groupSettings = QGroupBox("Note Type Mapping")
         scrollLayout = QVBoxLayout()
@@ -162,6 +189,14 @@ class ConfigDialog(QDialog):
         for (name, widget) in self.comboMap.items():
             newNoteTypes[name] = widget.currentText()
             
+        # tracking mode from radio buttons
+        if self.modeVocab.isChecked():
+            trackingMode = "vocab"
+        elif self.modeGrammar.isChecked():
+            trackingMode = "grammar"
+        else:
+            trackingMode = "both"
+
         # Update Config Object
         self.userConfig.update({
             "targetLevel": selectedLevel,
@@ -169,7 +204,9 @@ class ConfigDialog(QDialog):
             "deadline": self.dateInput.text(),
             "vocabColor": self.vocabBtn.currentColor,
             "grammarColor": self.grammarBtn.currentColor,
-            "noteTypes": newNoteTypes
+            "noteTypes": newNoteTypes,
+            "backgroundOpacity": self.opacitySlider.value() / 100.0,
+            "trackingMode": trackingMode
         })
         
         # Cleanups older settings

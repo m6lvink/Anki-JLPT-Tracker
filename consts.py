@@ -18,11 +18,13 @@ DEFAULT_LEVELS = {
 
 # Default user settings
 DEFAULT_USER_CONFIG = {
-    "noteTypes": {}, 
-    "targetLevel": "N3", 
+    "noteTypes": {},
+    "targetLevel": "N3",
     "deadline": "",
-    "vocabColor": "#4CAF50", 
+    "vocabColor": "#4CAF50",
     "grammarColor": "#2196F3",
-    "trackedDeckIds": [], 
-    "minimized": False
+    "trackedDeckIds": [],
+    "minimized": False,
+    "backgroundOpacity": 1.0,
+    "trackingMode": "both"
 }

@@ -60,17 +60,25 @@ def getProgressHistory(dataFilePath):
     except:
         return []
 
-def calculateGrowthRate(historyList):
-    # Average daily increase over 2 weeks
+def calculateGrowthRate(historyList, mode="both"):
+    # Average daily increase over 2 weeks for the given tracking mode
     if len(historyList) < 2:
         return 0
-    
+
     subsetList = historyList[-14:]
     firstEntry = subsetList[0]
     lastEntry = subsetList[-1]
-    
-    totalStart = firstEntry['vocab'] + firstEntry['grammar']
-    totalEnd = lastEntry['vocab'] + lastEntry['grammar']
+
+    if mode == "vocab":
+        totalStart = firstEntry['vocab']
+        totalEnd = lastEntry['vocab']
+    elif mode == "grammar":
+        totalStart = firstEntry['grammar']
+        totalEnd = lastEntry['grammar']
+    else:
+        totalStart = firstEntry['vocab'] + firstEntry['grammar']
+        totalEnd = lastEntry['vocab'] + lastEntry['grammar']
+
     diff = totalEnd - totalStart
     
     dStart = datetime.strptime(firstEntry['date'], "%Y-%m-%d")
