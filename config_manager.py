@@ -2,8 +2,17 @@ import json
 import os
 from . import consts
 
-def loadBaseConfig(basePath):
-    # Load read-only defaults
+def loadBaseConfig(addon_name, basePath):
+    # Anki addon manager first
+    try:
+        from aqt import mw
+        config = mw.addonManager.getConfig(addon_name)
+        if config and "jlptLevels" in config:
+            return config["jlptLevels"]
+    except:
+        pass
+
+    # Load read-only defaults fallback
     isFilePresent = os.path.exists(basePath)
     
     if isFilePresent:
@@ -15,7 +24,6 @@ def loadBaseConfig(basePath):
             pass
             
     return consts.DEFAULT_LEVELS.copy()
-
 def loadUserConfig(userPath):
     # Load user settings with fallback
     configMap = consts.DEFAULT_USER_CONFIG.copy()

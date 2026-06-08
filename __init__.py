@@ -24,7 +24,7 @@ pathsMap = {
 def getDashboardContent():
     # Helper to generate the HTML string
     userConfig = config_manager.loadUserConfig(userConfigPath)
-    levelData = config_manager.loadBaseConfig(baseConfigPath)
+    levelData = config_manager.loadBaseConfig(__name__, baseConfigPath)
     
     # Analyze DB
     statsTuple = db_utils.getCardCounts(userConfig)
